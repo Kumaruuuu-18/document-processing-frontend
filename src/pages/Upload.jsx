@@ -1,5 +1,5 @@
 import React from 'react'
-import FileUpload from '../components/fileUpload'
+import FileUpload from '../components/FileUpload'
 
 const Upload = ({file,setFile,fileUrl,setFileUrl,fileType,setFileType,activeItem,setActiveItem,processedData,setProcessedData,reviewJSON,setReviewJSON,docId,setDocId}) => {
   //  console.log("Upload props:", { activeItem, setActiveItem });

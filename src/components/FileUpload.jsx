@@ -44,7 +44,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
             );
 
             if (!response.ok) {
-                throw new Error(`Failed to fetch: ${response.status}`);
+                throw new Error(`Failed to fetch: ${response.status} Gemini Api is down please try again after some time`);
             }
 
             const data = await response.json();
@@ -58,7 +58,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
             toast.success("Document processed successfully!");
         } catch (error) {
             console.error(error);
-            toast.error("Error processing document!");
+            toast.error("Error processing document! Gemini Api is down please try again after some time");
         } finally {
             setIsProcessing(false);
         }
@@ -254,6 +254,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
                                         data={processedData}
                                         activeItem={activeItem}
                                         setActiveItem={setActiveItem}
+                                        docId={docId}
                                     />
                                 </div>
                             ) : (

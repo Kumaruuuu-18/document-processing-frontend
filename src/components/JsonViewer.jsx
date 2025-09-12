@@ -3,7 +3,7 @@ import React18JsonView from "react18-json-view"
 import { Button } from "@/components/ui/button"
 import "react18-json-view/src/style.css"
 import { Toaster, toast } from "sonner"
-const JsonViewer = ({data,activeItem,setActiveItem }) => {
+const JsonViewer = ({data,activeItem,setActiveItem,docId }) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(JSON.stringify(data, null, 2))
     toast.success("Copied to clipboard!!!📋")

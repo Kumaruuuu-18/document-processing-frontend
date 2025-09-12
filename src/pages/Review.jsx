@@ -73,7 +73,7 @@ const Review = ({
                 body: JSON.stringify(returnRes)
             });
 
-            if (!response.ok) throw new Error(`Failed to submit: ${response.status}`);
+            if (!response.ok) throw new Error(`Failed to submit: ${response.status} `);
 
             const data = await response.json();
             console.log("Review submit response:", data);
@@ -83,7 +83,7 @@ const Review = ({
 
         } catch (error) {
             console.error(error);
-            toast.error("Error submitting review!");
+            toast.error("Error submitting review! Gemini Api is down please try again after some time.");
         }
     };
 

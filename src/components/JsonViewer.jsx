@@ -20,7 +20,7 @@ const saveData = async () => {
         
           const returnRes = {
               document_id: docId,          
-              consolidated_fields: []
+              consolidated_fields: {}
           };
   
           try {

@@ -15,6 +15,39 @@ const JsonViewer = ({data,activeItem,setActiveItem }) => {
   }
   if (!data) return null
 
+const saveData = async () => {
+  {
+        
+          const returnRes = {
+              document_id: docId,          
+              consolidated_fields: []
+          };
+  
+          try {
+              const response = await fetch("https://document-processing-langgraph.onrender.com/review-submit", {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(returnRes)
+              });
+  
+              if (!response.ok) throw new Error(`Failed to submit: ${response.status} `);
+  
+              const data = await response.json();
+              console.log("Review submit response:", data);
+  
+              setHasChanges(false);
+                toast.success("Data has been saved!!!");
+  
+          } catch (error) {
+              console.error(error);
+              toast.error("Error submitting review! Gemini Api is down please try again after some time.");
+          }
+      };
+  toast.success("Data saved successfully!")
+}
+  
   return (
     <>
     
@@ -34,10 +67,11 @@ const JsonViewer = ({data,activeItem,setActiveItem }) => {
          <Button
           variant="primary"
           size="sm"
-          onClick={sendDataToReview}
+          // onClick={sendDataToReview}
+          onClick={saveData}
           className="bg-white/50 backdrop-blur-sm border-gray-200 hover:bg-white/80 hover:border-gray-300 shadow-sm hover:shadow-md transition-all duration-300"
         >
-          Mark it review(for testing)
+          Save Data
         </Button>
 
       </div>

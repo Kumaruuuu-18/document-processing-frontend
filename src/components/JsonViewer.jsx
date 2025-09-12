@@ -45,7 +45,7 @@ const JsonViewer = ({ data, activeItem, setActiveItem, docId }) => {
         toast.error("Error submitting review! Gemini Api is down please try again after some time.");
       }
     };
-    toast.success("Data saved successfully!")
+    // toast.success("Data saved successfully!")
   }
 
   return (

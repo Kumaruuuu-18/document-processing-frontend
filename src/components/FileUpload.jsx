@@ -36,7 +36,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
             setIsProcessing(true);
 
             const response = await fetch(
-                `http://10.107.1.71:8000/extraction-structured/${uploadedFile.results[0].document_id}`,
+                `https://document-processing-langgraph.onrender.com/extraction-structured/${uploadedFile.results[0].document_id}`,
                 {
                     method: "GET",
                     headers: { "Accept": "application/json" },
@@ -96,7 +96,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
         formData.append("files", file)
 
         try {
-            const response = await fetch("http://10.107.1.71:8000/process-init", { //   http://127.0.0.1:8000/files/upload
+            const response = await fetch("https://document-processing-langgraph.onrender.com/process-init", { //   http://127.0.0.1:8000/files/upload
                 method: "POST",
                 body: formData,
             })
@@ -126,7 +126,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
             const checkReview = async () => {
                 try {
                     const response = await fetch(
-                        `http://10.107.1.71:8000/review-low-confidence/${uploadedFile.results[0].document_id}`
+                        `https://document-processing-langgraph.onrender.com/review-low-confidence/${uploadedFile.results[0].document_id}`
                     );
 
                     if (!response.ok) {
@@ -174,7 +174,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
         if (uploadedFile) {
             const fetchFile = async () => {
                 try {
-                    const response = await fetch(`http://10.107.1.71:8000/raw-document/${uploadedFile.results[0].document_id}`)
+                    const response = await fetch(`https://document-processing-langgraph.onrender.com/raw-document/${uploadedFile.results[0].document_id}`)
                     if (!response.ok) throw new Error("Failed to fetch uploaded file")
 
                     const blob = await response.blob()
@@ -271,7 +271,7 @@ const FileUpload = ({ file, setFile, fileUrl, setFileUrl, fileType, setFileType,
                                             variant="outline"
                                             className="w-full rounded-xl py-6 text-lg font-medium border-2 hover:bg-gray-100"
                                         >
-                                            <a href={`http://127.0.0.1:8000${uploadedFile?.url}`} download>
+                                            <a href={`https://document-processing-langgraph.onrender.com/${uploadedFile?.url}`} download>
                                                 Download Original
                                             </a>
                                         </Button>

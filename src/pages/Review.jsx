@@ -65,7 +65,7 @@ const Review = ({
         };
 
         try {
-            const response = await fetch("http://10.107.1.71:8000/review-submit", {
+            const response = await fetch("https://document-processing-langgraph.onrender.com/review-submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

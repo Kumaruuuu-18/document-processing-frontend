@@ -50,10 +50,13 @@ const Review = ({
                     return newData[key] !== original?.current_value;
                 })
             );
-            setProcessedData(prev => ({
-                ...prev,
-                [fieldName]: newValue
-            }));
+            setProcessedData(prevData =>
+                prevData.map(field =>
+                    field.name === fieldName
+                        ? { ...field, value: newValue }  // update only changed field
+                        : field
+                )
+            );
 
             return newData;
         });

@@ -50,6 +50,10 @@ const Review = ({
                     return newData[key] !== original?.current_value;
                 })
             );
+            setProcessedData(prev => ({
+                ...prev,
+                [fieldName]: newValue
+            }));
 
             return newData;
         });
@@ -58,9 +62,9 @@ const Review = ({
 
     // Save changes
     const handleSave = async () => {
-      
+
         const returnRes = {
-            document_id: docId,          
+            document_id: docId,
             consolidated_fields: formData
         };
 
@@ -79,7 +83,7 @@ const Review = ({
             console.log("Review submit response:", data);
 
             setHasChanges(false);
-              toast.success("Data has been saved!!!");
+            toast.success("Data has been saved!!!");
 
         } catch (error) {
             console.error(error);
